@@ -1,4 +1,4 @@
-@setlocal DisableDelayedExpansion
+п»ї@setlocal DisableDelayedExpansion
 @echo off
 chcp 1251
 set "scriptver=2.6.3"
@@ -23,7 +23,7 @@ for /f "tokens=6 delims=[]. " %%i in ('ver') do set build=%%i
 
 if %build% LSS 17763 (
     echo =============================================================
-    echo Скрипт совместим только с Windows 10 v1809 и выше.
+    echo РЎРєСЂРёРїС‚ СЃРѕРІРјРµСЃС‚РёРј С‚РѕР»СЊРєРѕ СЃ Windows 10 v1809 Рё РІС‹С€Рµ.
     echo =============================================================
     echo.
     pause
@@ -34,7 +34,7 @@ reg query HKU\S-1-5-19 1>nul 2>nul
 if %ERRORLEVEL% equ 0 goto :START_SCRIPT
 
 echo =====================================================
-echo Этот скрипт нужно запускать от имени администратора.
+echo Р­С‚РѕС‚ СЃРєСЂРёРїС‚ РЅСѓР¶РЅРѕ Р·Р°РїСѓСЃРєР°С‚СЊ РѕС‚ РёРјРµРЅРё Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°.
 echo =====================================================
 echo.
 pause
@@ -47,31 +47,31 @@ if %ERRORLEVEL% equ 0 set "FlightSigningEnabled=1"
 
 :CHOICE_MENU
 cls
-title Оффлайн-инсайдерская регистрация v%scriptver%
+title РћС„С„Р»Р°Р№РЅ-РёРЅСЃР°Р№РґРµСЂСЃРєР°СЏ СЂРµРіРёСЃС‚СЂР°С†РёСЏ v%scriptver%
 mode con cols=98 lines=22
 set "choice="
 echo:
 echo    ________________________________________________________________
 echo   ^|                                                               ^|
 echo   ^|                                                               ^|
-echo   ^|        Оффлайн регистрация на канале получения обновлений     ^|
+echo   ^|        РћС„С„Р»Р°Р№РЅ СЂРµРіРёСЃС‚СЂР°С†РёСЏ РЅР° РєР°РЅР°Р»Рµ РїРѕР»СѓС‡РµРЅРёСЏ РѕР±РЅРѕРІР»РµРЅРёР№     ^|
 echo   ^|                                                               ^|
 echo   ^|_______________________________________________________________^|
 echo   ^|                                                               ^|
-echo   ^|      [1] Регистрация на канале разработчиков                  ^|
+echo   ^|      [1] Р РµРіРёСЃС‚СЂР°С†РёСЏ РЅР° РєР°РЅР°Р»Рµ СЂР°Р·СЂР°Р±РѕС‚С‡РёРєРѕРІ                  ^|
 echo   ^|                                                               ^|
-echo   ^|      [2] Регистрация в бета-канале                            ^|
+echo   ^|      [2] Р РµРіРёСЃС‚СЂР°С†РёСЏ РІ Р±РµС‚Р°-РєР°РЅР°Р»Рµ                            ^|
 echo   ^|                                                               ^|
-echo   ^|      [3] Регистрация на канале предварительного просмотра     ^|
+echo   ^|      [3] Р РµРіРёСЃС‚СЂР°С†РёСЏ РЅР° РєР°РЅР°Р»Рµ РїСЂРµРґРІР°СЂРёС‚РµР»СЊРЅРѕРіРѕ РїСЂРѕСЃРјРѕС‚СЂР°     ^|
 echo   ^|_______________________________________________________________^|
 echo   ^|                                                               ^|
-echo   ^|      [4] Прекратить получение предварительных инсайдер-сборок ^|
+echo   ^|      [4] РџСЂРµРєСЂР°С‚РёС‚СЊ РїРѕР»СѓС‡РµРЅРёРµ РїСЂРµРґРІР°СЂРёС‚РµР»СЊРЅС‹С… РёРЅСЃР°Р№РґРµСЂ-СЃР±РѕСЂРѕРє ^|
 echo   ^|_______________________________________________________________^|
 echo   ^|                                                               ^|
-echo   ^|      [5] Выйти без внесения изменений                         ^|
+echo   ^|      [5] Р’С‹Р№С‚Рё Р±РµР· РІРЅРµСЃРµРЅРёСЏ РёР·РјРµРЅРµРЅРёР№                         ^|
 echo   ^|_______________________________________________________________^|
 echo:   
-choice /C:12345 /N /M "Введите свой выбор на клавиатуре [1,2,3,4,5] : "
+choice /C:12345 /N /M "Р’РІРµРґРёС‚Рµ СЃРІРѕР№ РІС‹Р±РѕСЂ РЅР° РєР»Р°РІРёР°С‚СѓСЂРµ [1,2,3,4,5] : "
 
 if errorlevel  5 goto:EOF
 if errorlevel  4 goto:STOP_INSIDER
@@ -191,7 +191,7 @@ reg add "HKEY_LOCAL_MACHINE\SYSTEM\Setup\LabConfig" /f /t REG_DWORD /v BypassTPM
 reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\PCHC" /f /t REG_DWORD /v UpgradeEligibility /d 1
 if %build% LSS 21990 goto :EOF
 (
-echo Версия редактора реестра Windows 5.00
+echo Р’РµСЂСЃРёСЏ СЂРµРґР°РєС‚РѕСЂР° СЂРµРµСЃС‚СЂР° Windows 5.00
 echo.
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\WindowsSelfHost\UI\Strings]
 echo "StickyMessage"="{\"Message\":\"Device Enrolled Using OfflineInsiderEnroll\",\"LinkTitle\":\"\",\"LinkUrl\":\"\",\"DynamicXaml\":\"^<StackPanel xmlns=\\\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\\\"^>^<TextBlock Style=\\\"{StaticResource BodyTextBlockStyle }\\\"^>This device has been enrolled to the Windows Insider program using OfflineInsiderEnroll v%scriptver%. If you want to change settings of the enrollment or stop receiving Insider Preview builds, please use the script. ^<Hyperlink NavigateUri=\\\"https://github.com/abbodi1406/offlineinsiderenroll\\\" TextDecorations=\\\"None\\\"^>Learn more^</Hyperlink^>^</TextBlock^>^<TextBlock Text=\\\"Applied configuration\\\" Margin=\\\"0,20,0,10\\\" Style=\\\"{StaticResource SubtitleTextBlockStyle}\\\" /^>^<TextBlock Style=\\\"{StaticResource BodyTextBlockStyle }\\\" Margin=\\\"0,0,0,5\\\"^>^<Run FontFamily=\\\"Segoe MDL2 Assets\\\"^>^&#xECA7;^</Run^> ^<Span FontWeight=\\\"SemiBold\\\"^>%Fancy%^</Span^>^</TextBlock^>^<TextBlock Text=\\\"Channel: %Channel%\\\" Style=\\\"{StaticResource BodyTextBlockStyle }\\\" /^>^<TextBlock Text=\\\"Content: %Content%\\\" Style=\\\"{StaticResource BodyTextBlockStyle }\\\" /^>^<TextBlock Text=\\\"Telemetry settings notice\\\" Margin=\\\"0,20,0,10\\\" Style=\\\"{StaticResource SubtitleTextBlockStyle}\\\" /^>^<TextBlock Style=\\\"{StaticResource BodyTextBlockStyle }\\\"^>Windows Insider Program requires your diagnostic data collection settings to be set to ^<Span FontWeight=\\\"SemiBold\\\"^>Full^</Span^>. You can verify or modify your current settings in ^<Span FontWeight=\\\"SemiBold\\\"^>Diagnostics ^&amp; feedback^</Span^>.^</TextBlock^>^<Button Command=\\\"{StaticResource ActivateUriCommand}\\\" CommandParameter=\\\"ms-settings:privacy-feedback\\\" Margin=\\\"0,10,0,0\\\"^>^<TextBlock Margin=\\\"5,0,5,0\\\"^>Open Diagnostics ^&amp; feedback^</TextBlock^>^</Button^>^</StackPanel^>\",\"Severity\":0}"
@@ -202,26 +202,26 @@ del /f /q "%SystemRoot%\oie.reg"
 goto :EOF
 
 :ENROLL
-echo Внесение изменений...
-echo Применение изменений завершено!
+echo Р’РЅРµСЃРµРЅРёРµ РёР·РјРµРЅРµРЅРёР№...
+echo РџСЂРёРјРµРЅРµРЅРёРµ РёР·РјРµРЅРµРЅРёР№ Р·Р°РІРµСЂС€РµРЅРѕ!
 echo ======================================
-echo Вы зарегистрированы в %Channel% канале
+echo Р’С‹ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅС‹ РІ %Channel% РєР°РЅР°Р»Рµ
 echo ======================================
 call :RESET_INSIDER_CONFIG 1>NUL 2>NUL
 call :ADD_INSIDER_CONFIG 1>NUL 2>NUL
 bcdedit /set {current} flightsigning yes >nul 2>&1
-echo Выполнено!
+echo Р’С‹РїРѕР»РЅРµРЅРѕ!
 
 echo.
 if %FlightSigningEnabled% neq 1 goto :ASK_FOR_REBOOT
-echo Нажмите любую клавишу для выхода.
+echo РќР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ РґР»СЏ РІС‹С…РѕРґР°.
 pause >nul
 goto :EOF
 
 :STOP_INSIDER
-echo Применение изменений...
+echo РџСЂРёРјРµРЅРµРЅРёРµ РёР·РјРµРЅРµРЅРёР№...
 echo ==========================
-echo Инсайдерские Сборки остановлены
+echo РРЅСЃР°Р№РґРµСЂСЃРєРёРµ РЎР±РѕСЂРєРё РѕСЃС‚Р°РЅРѕРІР»РµРЅС‹
 echo ==========================
 call :RESET_INSIDER_CONFIG 1>nul 2>nul
 bcdedit /deletevalue {current} flightsigning >nul 2>&1
@@ -229,15 +229,15 @@ echo Done.
 
 echo.
 if %FlightSigningEnabled% neq 0 goto :ASK_FOR_REBOOT
-echo Нажмите любую клавишу для выхода.
+echo РќР°Р¶РјРёС‚Рµ Р»СЋР±СѓСЋ РєР»Р°РІРёС€Сѓ РґР»СЏ РІС‹С…РѕРґР°.
 pause >nul
 goto :EOF
 
 :ASK_FOR_REBOOT
 set "choice="
-echo Примечание:
-echo Для завершения применения изменений требуется перезагрузка.
-echo поскольку Microsoft Flight Signing отключена
-set /p choice="Вы хотите перезагрузить компьютер? (Y/N) "
+echo РџСЂРёРјРµС‡Р°РЅРёРµ:
+echo Р”Р»СЏ Р·Р°РІРµСЂС€РµРЅРёСЏ РїСЂРёРјРµРЅРµРЅРёСЏ РёР·РјРµРЅРµРЅРёР№ С‚СЂРµР±СѓРµС‚СЃСЏ РїРµСЂРµР·Р°РіСЂСѓР·РєР°.
+echo РїРѕСЃРєРѕР»СЊРєСѓ Microsoft Flight Signing РѕС‚РєР»СЋС‡РµРЅР°
+set /p choice="Р’С‹ С…РѕС‚РёС‚Рµ РїРµСЂРµР·Р°РіСЂСѓР·РёС‚СЊ РєРѕРјРїСЊСЋС‚РµСЂ? (Y/N) "
 if /I "%choice%"=="y" shutdown -r -t 0
 goto :EOF
